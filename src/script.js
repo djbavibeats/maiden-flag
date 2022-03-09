@@ -26,8 +26,8 @@ const scene = new THREE.Scene()
  * Textures
  */
 const textureLoader = new THREE.TextureLoader()
-const flagTexture = textureLoader.load('/textures/flag-french.jpg')
-const ironMaidenTexture = textureLoader.load('/textures/iron-maiden.jpg')
+// const ironMaidenTexture = textureLoader.load('/textures/iron-maiden.jpg')
+const voltFlagTexture = textureLoader.load('/textures/volt-flag.png')
 
 /**
  * Test mesh
@@ -45,14 +45,14 @@ for(let i = 0; i < count; i++) {
 geometry.setAttribute('aRandom', new THREE.BufferAttribute(randoms, 1))
 
 // Material
-const material = new THREE.RawShaderMaterial({
+const material = new THREE.ShaderMaterial({
     vertexShader: testVertextShader,
     fragmentShader: testFragmentShader,
     uniforms: {
         uFrequency: { value: new THREE.Vector2(10, 5) },
         uTime: { value: 0 },
         uColor: { value: new THREE.Color('orange') },
-        uTexture: { value: ironMaidenTexture }
+        uTexture: { value: voltFlagTexture }
     }
 })
 
@@ -108,7 +108,7 @@ const renderer = new THREE.WebGLRenderer({
 })
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-renderer.setClearColor('#111111')
+renderer.setClearColor('#000000')
 
 /**
  * Animate
